@@ -58,6 +58,7 @@ export default function ContactPage() {
                         <th>id</th>
                         <th>title</th>
                         <th>content</th>
+                        <th>delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -68,9 +69,16 @@ export default function ContactPage() {
                               <td>{contacts.contacts[index].id}</td>
                               <td>{contacts.contacts[index].title}</td>
                               <td>{contacts.contacts[index].content}</td>
+                              <td><Button variant="outline-danger" size="sm" onClick={async () => {
+                                if (confirm('Delete???') === false) return;
+                                await fetch(`${setting.apiPath}/api/contact/${contacts.contacts[index].id}`, {
+                                  method: 'DELETE',
+                                });
+                                mutate();
+                              }}>削除</Button></td>
                             </>
                           ) : (
-                            <td colSpan={3} className="invisible">Empty</td>
+                            <td colSpan={4} className="invisible">Empty</td>
                           )}
                         </tr>
                       ))}
@@ -78,13 +86,13 @@ export default function ContactPage() {
                   </Table>
                 </div>
                 <div className="mt-3 d-flex justify-content-between">
-                  <Button variant="primary" onClick={() => {
+                  <Button variant="success" onClick={() => {
                     if (contacts.pagination.prev_page) {
                       setPage(page - 1);
                     }
                   }} className="d-block m-auto" size="sm" disabled={contacts.pagination.prev_page === null}>前へ</Button>
-                  <Button variant="primary" onClick={Reload} className="d-block m-auto" size="sm">再読み込み</Button>
-                  <Button variant="primary" onClick={() => {
+                  <Button variant="success" onClick={Reload} className="d-block m-auto" size="sm">再読み込み</Button>
+                  <Button variant="success" onClick={() => {
                     if (contacts.pagination.next_page) {
                       setPage(page + 1);
                     }
