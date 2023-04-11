@@ -68,7 +68,7 @@ export default function ContactPage() {
           </thead>
           <tbody>
           {contacts.contacts && Array.from({ length: 5 }).map((contact: IContact, index) => (
-            <tr key={contacts.contacts[index].id}>
+            <tr key={index}>
               {contacts.contacts[index] ? (
                 <>
                   <td>{contacts.contacts[index].id}</td>
