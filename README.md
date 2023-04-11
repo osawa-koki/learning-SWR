@@ -11,6 +11,34 @@ docker build -t learning-swr .
 docker run -d -p 8000:8000 --name learning-swr learning-swr
 ```
 
+## 開発環境の構築
+
+```shell
+cd client
+yarn install
+yarn dev
+```
+
+```shell
+cd server
+bundle install
+rails server --port=8000
+```
+
+## 使用している技術
+
+- Next.js
+  - React
+  - TypeScript
+  - SWR
+- Ruby
+  - Ruby on Rails
+  - Kaminari
+- Docker
+- GitHub
+  - Repository
+  - GitHub Actions
+
 ## イロイロ説明
 
 ### SWR
