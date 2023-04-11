@@ -4,7 +4,7 @@
 
 ```shell
 docker build -t learning-swr .
-docker run -it -p 8000:8000 --name learning-swr learning-swr
+docker run -d -p 8000:8000 --name learning-swr learning-swr
 ```
 
 ## イロイロ説明
