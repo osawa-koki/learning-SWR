@@ -131,6 +131,13 @@ export default function ContactPage() {
                     }}>送信</Button>
                   </Form>
                 </div>
+                <Button variant="outline-danger" className="d-block mt-3 m-auto w-100" size="sm" onClick={async () => {
+                  if (confirm('Delete All???') === false) return;
+                  await fetch(`${setting.apiPath}/api/contact/-1`, {
+                    method: 'DELETE',
+                  });
+                  mutate();
+                }}>全削除</Button>
               </>
         }
       </div>

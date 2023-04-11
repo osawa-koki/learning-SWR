@@ -24,6 +24,11 @@ class Api::ContactController < ApplicationController
   end
 
   def destroy
+    if params[:id] == '-1'
+      Contact.destroy_all
+      render json: { message: 'All contacts are deleted.' }
+      return
+    end
     @contact = Contact.find(params[:id])
     @contact.destroy
     render json: @contact
