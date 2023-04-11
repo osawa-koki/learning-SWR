@@ -9,9 +9,6 @@ type IContact = {
   id: number;
   title: string;
   content: string;
-  status: number;
-  published_at: Date;
-  closed_at: Date;
   created_at: Date;
   updated_at: Date;
 };
@@ -60,9 +57,6 @@ export default function ContactPage() {
                 <th>id</th>
                 <th>title</th>
                 <th>content</th>
-                <th>status</th>
-                <th>published_at</th>
-                <th>closed_at</th>
               </tr>
             </thead>
             <tbody>
@@ -73,12 +67,9 @@ export default function ContactPage() {
                     <td>{contacts.contacts[index].id}</td>
                     <td>{contacts.contacts[index].title}</td>
                     <td>{contacts.contacts[index].content}</td>
-                    <td>{contacts.contacts[index].status}</td>
-                    <td>{contacts.contacts[index].published_at.toString()}</td>
-                    <td>{contacts.contacts[index].closed_at.toString()}</td>
                   </>
                 ) : (
-                  <td colSpan={6} className="invisible">Empty</td>
+                  <td colSpan={3} className="invisible">Empty</td>
                 )}
               </tr>
             ))}
