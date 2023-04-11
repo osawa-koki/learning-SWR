@@ -106,19 +106,29 @@ export default function ContactPage() {
                     </tr>
                   </tbody>
                 </Table>
-                <div className="mt-3">
+                <div className="mt-3 p-3 border bg-light">
                   <Form>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group className="mt-3">
                       <Form.Label>タイトル</Form.Label>
                       <Form.Control type="text" placeholder="タイトル" value={title} onChange={(e) => setTitle(e.target.value)} />
                     </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
+                    <Form.Group className="mt-3">
                       <Form.Label>内容</Form.Label>
-                      <Form.Control type="text" placeholder="内容" value={content} onChange={(e) => setContent(e.target.value)} />
+                      <Form.Control as="textarea" rows={3} placeholder="内容" value={content} onChange={(e) => setContent(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                      送信
-                    </Button>
+                    <Button variant="primary" className="d-block mt-3 m-auto" onClick={async () => {
+                      await fetch(`${setting.apiPath}/api/contact`, {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          title: title,
+                          content: content,
+                        }),
+                      });
+                      mutate();
+                    }}>送信</Button>
                   </Form>
                 </div>
               </>
