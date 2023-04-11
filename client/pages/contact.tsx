@@ -20,18 +20,32 @@ const fetcher = url => fetch(url).then(r => r.json());
 
 export default function ContactPage() {
 
-  const { data: contacts, mutate }: {
+  const [page, setPage] = useState(1);
+
+  const { data: contacts, error, mutate }: {
     data: IContact[];
+    error: any;
     mutate: any;
-  } = useSWR(`${setting.apiPath}/api/contact`, fetcher);
+  } = useSWR(`${setting.apiPath}/api/contact?page=${page}`, fetcher, {
+    revalidateOnFocus: false,
+    dedupingInterval: 10000,
+  });
+
+  const Reload = () => {
+    mutate();
+  };
 
   useEffect(() => {
 
   }, []);
 
+  if (error) return <p>Error: {error.message}</p>; // 追加
+  if (!contacts) return <p>Loading...</p>;
+
   return (
     <Layout>
       <div id="Contact">
+
         <Table>
           <thead>
             <tr>
@@ -56,6 +70,18 @@ export default function ContactPage() {
             ))}
           </tbody>
         </Table>
+        <div>
+          {/* ページネーション */}
+          <Button variant="primary" onClick={() => {
+            if (page > 1) {
+              setPage(page - 1);
+            }
+          }} className="d-block mt-3 m-auto">前へ</Button>
+          <Button variant="primary" className="d-block mt-3 m-auto" onClick={() => {
+            setPage(page + 1);
+          }}>次へ</Button>
+        </div>
+        <Button variant="primary" onClick={Reload} className="d-block mt-3 m-auto">再読み込み</Button>
       </div>
     </Layout>
   );
