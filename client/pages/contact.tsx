@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import useSWR from 'swr';
-import { Button, Table } from 'react-bootstrap';
+import { Alert, Button, Table } from 'react-bootstrap';
 import Layout from "../components/Layout";
 import setting from "../setting";
 
@@ -44,12 +44,8 @@ export default function ContactPage() {
     mutate();
   };
 
-  useEffect(() => {
-
-  }, []);
-
-  if (error) return <p>Error: {error.message}</p>; // 追加
-  if (!contacts) return <p>Loading...</p>;
+  if (error) return <Alert variant="danger" className="mt-3">Error: {error.message}</Alert>;
+  if (!contacts) return <Alert variant="warning" className="mt-3">Loading...</Alert>;
 
   return (
     <Layout>
