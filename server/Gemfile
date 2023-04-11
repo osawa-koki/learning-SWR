@@ -50,3 +50,6 @@ end
 gem "rack-cors", "~> 2.0"
 
 gem "kaminari", "~> 1.2"
+
+gem "rubocop", "~> 1.50"
+gem "rubocop-rails", "~> 2.19"
