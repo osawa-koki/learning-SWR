@@ -71,7 +71,6 @@ export default function ContactPage() {
           </tbody>
         </Table>
         <div>
-          {/* ページネーション */}
           <Button variant="primary" onClick={() => {
             if (page > 1) {
               setPage(page - 1);
