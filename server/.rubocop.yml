@@ -10,6 +10,8 @@ Style/SpecialGlobalVars:
   Enabled: false
 Style/IfUnlessModifier:
   Enabled: false
+Style/GlobalStdStream:
+  Enabled: false
 Layout/EndOfLine:
   Enabled: false
 Layout/LineLength:
