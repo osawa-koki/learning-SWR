@@ -1,5 +1,12 @@
 # learning-SWR
 
+## 実行方法
+
+```shell
+docker build -t learning-swr .
+docker run -it -p 8000:8000 --name learning-swr learning-swr
+```
+
 ## イロイロ説明
 
 ### SWR
