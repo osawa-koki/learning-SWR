@@ -47,7 +47,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Use Ruby
-      uses: actions/setup-ruby@v1
+      uses: actions/setup-ruby@v3
       with:
         ruby-version: ${{ matrix.ruby-version }}
     - name: Install dependencies
