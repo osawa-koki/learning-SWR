@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import useSWR from 'swr';
-import { Button, Alert, Form, Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import Layout from "../components/Layout";
 import setting from "../setting";
 
