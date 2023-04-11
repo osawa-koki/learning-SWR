@@ -14,11 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_11_104119) do
   create_table "contacts", force: :cascade do |t|
     t.text "title"
     t.text "content"
-    t.integer "status"
-    t.date "published_at"
-    t.date "closed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end
