@@ -53,7 +53,6 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
@@ -67,8 +66,8 @@ Rails.application.configure do
     allow do
       origins '*'
       resource '*',
-        headers: :any,
-        methods: %i[get post patch put delete options head]
+               headers: :any,
+               methods: %i[get post patch put delete options head]
     end
   end
 end
