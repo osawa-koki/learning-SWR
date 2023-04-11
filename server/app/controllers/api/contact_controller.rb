@@ -2,7 +2,16 @@ class Api::ContactController < ApplicationController
   def index
     page = params[:page].presence || 1
     @contacts = Contact.order(id: :asc).page(page)
-    render json: @contacts
+    render json: {
+      contacts: @contacts,
+      pagination: {
+        current_page: @contacts.current_page,
+        next_page: @contacts.next_page,
+        prev_page: @contacts.prev_page,
+        total_pages: @contacts.total_pages,
+        total_count: @contacts.total_count,
+      }
+    }
   end
 
   def show

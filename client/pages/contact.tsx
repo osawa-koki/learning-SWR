@@ -23,7 +23,16 @@ export default function ContactPage() {
   const [page, setPage] = useState(1);
 
   const { data: contacts, error, mutate }: {
-    data: IContact[];
+    data: {
+      contacts: IContact[];
+      pagination: {
+        current_page: number;
+        next_page: number | null;
+        prev_page: number | null;
+        total_pages: number;
+        total_count: number;
+      };
+    };
     error: any;
     mutate: any;
   } = useSWR(`${setting.apiPath}/api/contact?page=${page}`, fetcher, {
@@ -58,7 +67,7 @@ export default function ContactPage() {
             </tr>
           </thead>
           <tbody>
-            {contacts && contacts.map((contact, index) => (
+            {contacts.contacts && contacts.contacts.map((contact, index) => (
               <tr key={index}>
                 <td>{contact.id}</td>
                 <td>{contact.title}</td>
@@ -70,17 +79,19 @@ export default function ContactPage() {
             ))}
           </tbody>
         </Table>
-        <div>
+        <div className="mt-3 d-flex justify-content-between">
           <Button variant="primary" onClick={() => {
-            if (page > 1) {
+            if (contacts.pagination.prev_page) {
               setPage(page - 1);
             }
-          }} className="d-block mt-3 m-auto">前へ</Button>
-          <Button variant="primary" className="d-block mt-3 m-auto" onClick={() => {
-            setPage(page + 1);
-          }}>次へ</Button>
+          }} className="d-block mt-3 m-auto" size="sm" disabled={contacts.pagination.prev_page === null}>前へ</Button>
+          <Button variant="primary" onClick={Reload} className="d-block mt-3 m-auto" size="sm">再読み込み</Button>
+          <Button variant="primary" onClick={() => {
+            if (contacts.pagination.next_page) {
+              setPage(page + 1);
+            }
+          }} className="d-block mt-3 m-auto" size="sm" disabled={contacts.pagination.next_page === null}>次へ</Button>
         </div>
-        <Button variant="primary" onClick={Reload} className="d-block mt-3 m-auto">再読み込み</Button>
       </div>
     </Layout>
   );
