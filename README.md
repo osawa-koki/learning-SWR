@@ -1,5 +1,7 @@
 # learning-SWR
 
+🦢🦢🦢 SWR(Next.js/React)とKaminari(Ruby)を使ってページネーションを実装するサンプルです。  
+
 ## 実行方法
 
 ```shell
