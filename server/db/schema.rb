@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_411_104_119) do
-  create_table 'contacts', force: :cascade do |t|
-    t.text 'title'
-    t.text 'content'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+ActiveRecord::Schema[7.0].define(version: 2023_04_11_104119) do
+  create_table "contacts", force: :cascade do |t|
+    t.text "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end

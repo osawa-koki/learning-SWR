@@ -55,6 +55,12 @@ jobs:
         gem install bundler
         bundle install
       working-directory: ${{ env.server-directory }}
+    - name: Run linter
+      run: rubocop
+      working-directory: ${{ env.server-directory }}
+    - name: DB setup
+      run: rails RAILS_ENV=test db:migrate
+      working-directory: ${{ env.server-directory }}
     - name: Run tests
-      run: bundle exec rspec
+      run: rails test
       working-directory: ${{ env.server-directory }}
