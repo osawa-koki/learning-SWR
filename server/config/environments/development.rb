@@ -67,8 +67,8 @@ Rails.application.configure do
     allow do
       origins '*'
       resource '*',
-               headers: :any,
-               methods: %i[get post patch put delete options head]
+        headers: :any,
+        methods: %i[get post patch put delete options head]
     end
   end
 end
