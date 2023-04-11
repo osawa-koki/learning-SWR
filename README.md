@@ -25,6 +25,20 @@ bundle install
 rails server --port=8000
 ```
 
+## 使用している技術
+
+- Next.js
+  - React
+  - TypeScript
+  - SWR
+- Ruby
+  - Ruby on Rails
+  - Kaminari
+- Docker
+- GitHub
+  - Repository
+  - GitHub Actions
+
 ## イロイロ説明
 
 ### SWR
