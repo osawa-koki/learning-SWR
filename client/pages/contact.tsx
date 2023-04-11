@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import useSWR from 'swr';
-import { Alert, Button, Table } from 'react-bootstrap';
+import { Alert, Button, Form, Table } from 'react-bootstrap';
 import Layout from "../components/Layout";
 import setting from "../setting";
 
@@ -21,6 +21,9 @@ const fetcher = url => fetch(url).then(r => r.json());
 export default function ContactPage() {
 
   const [page, setPage] = useState(1);
+
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   const { data: contacts, error, mutate }: {
     data: {
@@ -111,6 +114,21 @@ export default function ContactPage() {
             </tr>
           </tbody>
         </Table>
+        <div className="mt-3">
+          <Form>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>タイトル</Form.Label>
+              <Form.Control type="text" placeholder="タイトル" value={title} onChange={(e) => setTitle(e.target.value)} />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>内容</Form.Label>
+              <Form.Control type="text" placeholder="内容" value={content} onChange={(e) => setContent(e.target.value)} />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              送信
+            </Button>
+          </Form>
+        </div>
       </div>
     </Layout>
   );
