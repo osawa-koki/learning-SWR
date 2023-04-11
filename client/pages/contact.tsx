@@ -62,7 +62,7 @@ export default function ContactPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {contacts.contacts && Array.from({ length: 5 }).map((contact: IContact, index) => (
+                      {contacts.contacts && Array.from({ length: 5 }).map((_, index) => (
                         <tr key={index}>
                           {contacts.contacts[index] ? (
                             <>
