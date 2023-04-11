@@ -67,16 +67,22 @@ export default function ContactPage() {
             </tr>
           </thead>
           <tbody>
-            {contacts.contacts && contacts.contacts.map((contact, index) => (
-              <tr key={index}>
-                <td>{contact.id}</td>
-                <td>{contact.title}</td>
-                <td>{contact.content}</td>
-                <td>{contact.status}</td>
-                <td>{contact.published_at.toString()}</td>
-                <td>{contact.closed_at.toString()}</td>
-              </tr>
-            ))}
+          {contacts.contacts && Array.from({ length: 5 }).map((contact: IContact, index) => (
+            <tr key={contacts.contacts[index].id}>
+              {contacts.contacts[index] ? (
+                <>
+                  <td>{contacts.contacts[index].id}</td>
+                  <td>{contacts.contacts[index].title}</td>
+                  <td>{contacts.contacts[index].content}</td>
+                  <td>{contacts.contacts[index].status}</td>
+                  <td>{contacts.contacts[index].published_at.toString()}</td>
+                  <td>{contacts.contacts[index].closed_at.toString()}</td>
+                </>
+              ) : (
+                <td colSpan={6} className="invisible">Empty</td>
+              )}
+            </tr>
+          ))}
           </tbody>
         </Table>
         <div className="mt-3 d-flex justify-content-between">
