@@ -9,7 +9,7 @@ class Api::ContactController < ApplicationController
         next_page: @contacts.next_page,
         prev_page: @contacts.prev_page,
         total_pages: @contacts.total_pages,
-        total_count: @contacts.total_count,
+        total_count: @contacts.total_count
       }
     }
   end
