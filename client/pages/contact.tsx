@@ -82,13 +82,13 @@ export default function ContactPage() {
                     if (contacts.pagination.prev_page) {
                       setPage(page - 1);
                     }
-                  }} className="d-block mt-3 m-auto" size="sm" disabled={contacts.pagination.prev_page === null}>前へ</Button>
-                  <Button variant="primary" onClick={Reload} className="d-block mt-3 m-auto" size="sm">再読み込み</Button>
+                  }} className="d-block m-auto" size="sm" disabled={contacts.pagination.prev_page === null}>前へ</Button>
+                  <Button variant="primary" onClick={Reload} className="d-block m-auto" size="sm">再読み込み</Button>
                   <Button variant="primary" onClick={() => {
                     if (contacts.pagination.next_page) {
                       setPage(page + 1);
                     }
-                  }} className="d-block mt-3 m-auto" size="sm" disabled={contacts.pagination.next_page === null}>次へ</Button>
+                  }} className="d-block m-auto" size="sm" disabled={contacts.pagination.next_page === null}>次へ</Button>
                 </div>
                 <Table className="border mt-3">
                   <tbody>
