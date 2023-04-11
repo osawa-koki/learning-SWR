@@ -4,4 +4,9 @@ class Api::ContactController < ApplicationController
     @contacts = Contact.order(created_at: :desc).page(page)
     render json: @contacts
   end
+
+  def show
+    @contact = Contact.find(params[:id])
+    render json: @contact
+  end
 end
