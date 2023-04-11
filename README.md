@@ -2,6 +2,8 @@
 
 🦢🦢🦢 SWR(Next.js/React)とKaminari(Ruby)を使ってページネーションを実装するサンプルです。  
 
+![成果物](./docs/img/fruit.gif)  
+
 ## 実行方法
 
 ```shell
