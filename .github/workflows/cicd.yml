@@ -1,0 +1,31 @@
+name: Run check
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  client-check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: yarn install
+    - name: Run tests
+      run: yarn test
+    - name: Run linter
+      run: yarn lint
+    - name: Check outdated packages
+      run: yarn outdated
+    - name: Check for security vulnerabilities
+      run: yarn audit
